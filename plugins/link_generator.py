@@ -6,6 +6,7 @@ from bot import Bot
 from config import ADMINS, OWNER_ID
 from helper_func import encode, get_message_id
 from database.database import is_admin
+from pyrogram.enums import ParseMode
 
 @Bot.on_message(filters.command('batch') & filters.private)
 async def batch(client: Client, message: Message):
@@ -42,7 +43,7 @@ async def batch(client: Client, message: Message):
     base64_string = await encode(string)
     link = f"https://t.me/{client.username}?start={base64_string}"
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
-    await second_message.reply_text(f"<b><blockquote>✧ <u>Exculsive Content</u><blockquote>\n\nHeading✨💞\n\n<blockquote>🔗LINK -\n {link}</blockquote>\n\n ======================= \n✅ How to Watch Video👇 \nhttps://t.me/Link_Download_Tutorial/3</b>", quote=True, reply_markup=reply_markup)
+    await second_message.reply_text(f"<b><blockquote>✧ <u>Exculsive Content</u></blockquote>\n\nHeading✨💞\n\n<blockquote>🔗LINK -\n {link}</blockquote>\n\n ======================= \n✅ How to Watch Video👇 \nhttps://t.me/Link_Download_Tutorial/3</b>", quote=True, reply_markup=reply_markup)
 
 @Bot.on_message(filters.command('genlink') & filters.private)
 async def link_generator(client: Client, message: Message):
@@ -65,4 +66,4 @@ async def link_generator(client: Client, message: Message):
     base64_string = await encode(f"get-{msg_id * abs(client.db_channel.id)}")
     link = f"https://t.me/{client.username}?start={base64_string}"
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
-    await channel_message.reply_text(f"<b><blockquote>✧ <u>Exculsive Content</u><blockquote>\n\nHeading✨💞\n\n<blockquote>🔗LINK -\n {link}</blockquote>\n\n ======================= \n✅ How to Watch Video👇 \nhttps://t.me/Link_Download_Tutorial/3</b>", quote=True, reply_markup=reply_markup)
+    await channel_message.reply_text(f"<b><blockquote>✧ <u>Exculsive Content</u></blockquote>\n\nHeading✨💞\n\n<blockquote>🔗LINK -\n {link}</blockquote>\n\n ======================= \n✅ How to Watch Video👇 \nhttps://t.me/Link_Download_Tutorial/3</b>", quote=True, reply_markup=reply_markup)
