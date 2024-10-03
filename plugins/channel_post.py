@@ -4,6 +4,7 @@ import asyncio
 from pyrogram import filters, Client
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait
+from pyrogram.enums import ParseMode
 
 from bot import Bot
 from config import ADMINS, CHANNEL_ID, DISABLE_CHANNEL_BUTTON
@@ -33,7 +34,7 @@ async def channel_post(client: Client, message: Message):
 
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
 
-    await reply_text.edit(f"<b><blockquote>✧ <u>Exculsive Content</u><blockquote>\n\nHeading✨💞\n\n<blockquote>🔗LINK -\n {link}</blockquote>\n\n ======================= \n✅ How to Watch Video👇 \nhttps://t.me/Link_Download_Tutorial/3</b>", reply_markup=reply_markup, disable_web_page_preview = True)
+    await reply_text.edit(f"<b><blockquote>✧ <u>Exculsive Content</u></blockquote>\n\nHeading✨💞\n\n<blockquote>🔗LINK -\n {link}</blockquote>\n\n ======================= \n✅ How to Watch Video👇 \nhttps://t.me/Link_Download_Tutorial/3</b>", reply_markup=reply_markup, disable_web_page_preview = True)
 
     if not DISABLE_CHANNEL_BUTTON:
         await post_message.edit_reply_markup(reply_markup)
